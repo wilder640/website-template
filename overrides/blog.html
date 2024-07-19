@@ -96,18 +96,20 @@
             {% for post in posts %}
                 {% set post_image = "" %}
                 {% if post.meta and post.meta.banner %}
-                    {% set post_image = post.canonical_url ~ post.meta.banner %}
+                    {% set post_image = post.canonical_url ~ "/images/" ~ post.meta.banner %}
                 {% endif %}
                 <div class="post">
                     <h4 class="post-title">
                         <a href="{{ post.canonical_url }}">{{ post.title }}</a>
-                        {% if post.meta and post.meta.category %}
-                            <span class="md-source-file__fact">
-                                <span class="md-icon" title="分類">
-                                    {% include ".icons/material/folder-open.svg" %}
+                        {% if post.meta and post.meta.categories %}
+                            {% for category in post.meta.categories %}
+                                <span class="md-source-file__fact">
+                                    <span class="md-icon" title="分類">
+                                        {% include ".icons/material/folder-open.svg" %}
+                                    </span>
+                                    {{ category }}
+                                {% endfor %}
                                 </span>
-                                {{ post.meta.category }}
-                            </span>
                         {% endif %}
                     </h4>
                     <div class="post-info-wrap">
