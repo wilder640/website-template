@@ -146,7 +146,9 @@
                             </div>
                         </div>
                         {% if post_image %}
-                            <img class="post-banner " src='{{ post_image }}' />
+                            <a class="glightbox" href='{{ post_image }}' data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom">
+                                <img class="post-banner " src='{{ post_image }}' />
+                            </a>
                         {% endif %}
                     </div>
                 </div>
